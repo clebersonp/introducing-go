@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-type Prepareble interface {
+type Preparable interface {
 	Prepare()
 }
 
@@ -56,14 +56,14 @@ func (t *Tea) Prepare() {
 }
 
 func main() {
-	var tea Prepareble = &GreenTea{}
+	var tea Preparable = &GreenTea{}
 	prepare(tea)
 
 	tea = &Tea{}
 	prepare(tea)
 }
 
-func prepare(p Prepareble) {
+func prepare(p Preparable) {
 	fmt.Printf("Typeof: %T\n", p)
 	p.Prepare()
 }
