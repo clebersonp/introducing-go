@@ -2,6 +2,10 @@ package main
 
 import "fmt"
 
+type Prepareble interface {
+	Prepare()
+}
+
 type Tea struct{}
 
 func (t *Tea) addWater() {
@@ -52,9 +56,14 @@ func (t *Tea) Prepare() {
 }
 
 func main() {
-	greenTea := GreenTea{}
-	greenTea.Prepare()
+	var tea Prepareble = &GreenTea{}
+	prepare(tea)
 
-	tea := greenTea.Tea
-	tea.Prepare()
+	tea = &Tea{}
+	prepare(tea)
+}
+
+func prepare(p Prepareble) {
+	fmt.Printf("Typeof: %T\n", p)
+	p.Prepare()
 }
