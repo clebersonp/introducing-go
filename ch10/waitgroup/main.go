@@ -30,6 +30,7 @@ type Controller struct {
 }
 
 func (s *Controller) Add(person *Person, err error) {
+	// comment the mutex to see the DATA RACE. Run: go run -race main.go
 	s.m.Lock()
 	defer s.m.Unlock()
 	s.results = append(s.results, &Result{person, err})
