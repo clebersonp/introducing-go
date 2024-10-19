@@ -15,9 +15,11 @@ func main() {
 		B:     0,
 		Reply: make(chan int),
 	}
+	// send work to the server channel
 	s <- divideByZero
 
 	select {
+	// receive the result from the server by the Reply channel
 	case res := <-divideByZero.Reply:
 		fmt.Println(res)
 	case <-time.After(2 * time.Second):
