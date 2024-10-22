@@ -39,6 +39,7 @@ func sharingIsCaring() {
 func main() {
 	// How to detect data race?
 	// Run: go run -race main.go
+	// Run: go test -race ./... (packages)
 	//race()
 
 	sharingIsCaring()
